@@ -1,0 +1,46 @@
+{
+  "name": "lcool",
+  "version": "0.0.1",
+  "description": "leetcode unofficial CLI to make your own LC repo",
+  "main": "index.js",
+  "module": "true",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "^12.0.0 || >= 14.0.0"
+  },
+  "bin": {
+    "lcool": "bin/lcool.js"
+  },
+  "keywords": [
+    "leetcode",
+    "cli",
+    "lcool",
+    "code"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "LiHowe",
+  "homepage": "https://github.com/LiHowe/lcool",
+  "bugs": {
+    "url": "https://github.com/LiHowe/lcool/issues"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.0.3"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "commander": "^9.3.0",
+    "dayjs": "^1.11.3",
+    "download-git-repo": "^3.0.2",
+    "fs-extra": "^10.1.0",
+    "globby": "^13.1.2",
+    "leven": "^4.0.0",
+    "open": "^8.4.0",
+    "ora": "^6.1.2",
+    "prompts": "^2.4.2"
+  }
+}
