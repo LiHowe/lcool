@@ -5,7 +5,7 @@
   "main": "index.js",
   "module": "true",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "engines": {
     "node": "^12.0.0 || >= 14.0.0"
@@ -30,7 +30,9 @@
   "license": "MIT",
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",
-    "@types/node": "^18.0.3"
+    "@types/node": "^18.0.3",
+    "cross-env": "^7.0.3",
+    "jest": "^28.1.2"
   },
   "dependencies": {
     "axios": "^0.27.2",
@@ -41,8 +43,10 @@
     "fs-extra": "^10.1.0",
     "globby": "^13.1.2",
     "leven": "^4.0.0",
+    "lowdb": "^3.0.0",
     "open": "^8.4.0",
     "ora": "^6.1.2",
+    "pino": "^8.1.0",
     "prompts": "^2.4.2"
   }
 }
