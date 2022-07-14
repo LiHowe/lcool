@@ -1,0 +1,13 @@
+{
+  "configurations": [
+    {
+      "name": "test",
+      "program": "${file}",
+      "request": "launch",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "pwa-node"
+    }
+  ]
+}

@@ -5,7 +5,12 @@
   "main": "index.js",
   "module": "true",
   "scripts": {
-    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest"
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
+    "commit": "cz",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "change": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "prepublish": "npm run change && npm run test",
+    "fix": "eslint --fix"
   },
   "engines": {
     "node": "^12.0.0 || >= 14.0.0"
@@ -27,12 +32,24 @@
   "bugs": {
     "url": "https://github.com/LiHowe/lcool/issues"
   },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{mjs, js}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
   "license": "MIT",
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",
     "@types/node": "^18.0.3",
+    "commitizen": "^4.2.4",
     "cross-env": "^7.0.3",
-    "jest": "^28.1.2"
+    "eslint": "^8.19.0",
+    "jest": "^28.1.2",
+    "lint-staged": "^13.0.3"
   },
   "dependencies": {
     "axios": "^0.27.2",
@@ -46,7 +63,7 @@
     "lowdb": "^3.0.0",
     "open": "^8.4.0",
     "ora": "^6.1.2",
-    "pino": "^8.1.0",
-    "prompts": "^2.4.2"
+    "prompts": "^2.4.2",
+    "winston": "^3.8.1"
   }
 }
