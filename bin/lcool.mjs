@@ -9,10 +9,19 @@ import {
   handleInit,
 } from '../lib/handler/index.mjs'
 
+import { getPkgVersion } from '../lib/utils/version.mjs'
+
 program
 .command('init')
 .description('初始化本地仓库')
 .action(handleInit)
+
+program
+.command('version')
+.description('查看版本号')
+.action(() => {
+  console.log(getPkgVersion())
+})
 
 program
 .command('generate')

@@ -8,3 +8,7 @@
 + [envinfo](https://www.npmjs.com/package/envinfo) - 本机环境
 
 + [progress-bar](https://github.com/fredericojordan/progress-bar) - 嵌入式 svg 进度条生成工具
+
+## 参考链接
+
++ [leetcode-cli](https://github1s.com/skygragon/leetcode-cli/blob/HEAD/lib/plugins/leetcode.js)

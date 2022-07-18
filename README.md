@@ -1,6 +1,18 @@
 # lcool
 leetcode unofficial CLI to make your own LC repo
 
+## Install
+
+```shell
+npm install -g lcool
+```
+
+## Usage
+
+```bash
+$ lcool [command] [options]
+```
+
 ## Feature
 
 + [ ] Init GitHub Repo
