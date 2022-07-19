@@ -1,0 +1,22 @@
+POST https://leetcode-cn.com/graphql
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query allQuestions {
+  allQuestionsBeta {
+    ...questionSummaryFields
+    __typename
+  }
+}
+fragment questionSummaryFields on QuestionNode {
+  title
+  titleSlug
+  translatedTitle
+  questionId
+  questionFrontendId
+  status
+  difficulty
+  isPaidOnly
+  categoryTitle
+  __typename
+}

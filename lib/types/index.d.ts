@@ -161,8 +161,8 @@ export interface Question {
   questionFrontendId: string
   categoryTitle: string
   boundTopicId: number
-  title: string
-  titleSlug: string
+  title: string // 标题
+  titleSlug: string // 处理后的标题
   content: string
   translatedTitle: string
   translatedContent: string
@@ -196,4 +196,16 @@ export interface Question {
   ugcQuestionId?: string
   style: string
   exampleTestcases: string // 例子测试用例
+}
+
+export interface QuestionLightNode {
+  acRate: number // 通过率
+  difficulty: 'EASY' | 'MEDIUM' | 'HARD' // 困难度
+  paidOnly: boolean // 是否是plus专享
+  frontendQuestionId: string // 题目ID
+  title: string // 标题
+  titleCn: string // 中文标题
+  titleSlug: string // 处理后的标题
+  solutionNum: number // 题解数量
+  status: 'AC' | 'TRIED' | 'NOT_START' // 状态
 }
