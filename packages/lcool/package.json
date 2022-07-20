@@ -15,8 +15,8 @@
   "author": "LiHowe",
   "license": "MIT",
   "dependencies": {
+    "@lcool/utils": "^0.0.1",
     "commander": "^9.4.0",
-    "@lcool/utils": "*",
     "prompts": "^2.4.2"
   },
   "devDependencies": {
