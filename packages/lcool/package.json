@@ -1,0 +1,17 @@
+{
+  "name": "lcool",
+  "version": "0.0.1",
+  "description": "A leetcode CLI for building self lc repo",
+  "type": "commonjs",
+  "bin": {
+    "lcool": "./src/index.js"
+  },
+  "engines": {
+    "node": "^12.0.0 || >= 14.0.0"
+  },
+  "author": "LiHowe",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^9.4.0"
+  }
+}

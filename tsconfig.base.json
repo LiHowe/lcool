@@ -13,8 +13,13 @@
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "esModuleInterop": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@lcool/api": ["packages/api/src/index.ts"],
+      "@lcool/utils": ["packages/utils/index.ts"],
+      "lcool": ["packages/lcool/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
