@@ -9,15 +9,12 @@ import {
   init,
 } from './lib'
 
+program.version(version())
+
 program
 .command('init')
 .description('初始化本地仓库')
 .action(init)
-
-program
-.command('version')
-.description('查看版本号')
-.action(version)
 
 // program
 // .command('generate')

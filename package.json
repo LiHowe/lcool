@@ -4,8 +4,11 @@
   "license": "MIT",
   "scripts": {
     "build:lc": "nx build lcool",
-    "build:cli": "nx build lcool-cli",
-    "publish:lc": "cd dist/packages/lcool && npm publish --access=public"
+    "publish:lc": "cd dist/packages/lcool && npm publish --access=public",
+    "prepublish": "lerna version",
+    "publish": "lerna publish",
+    "init": "lerna bootstrap",
+    "commit": "git-cz"
   },
   "private": true,
   "dependencies": {
@@ -28,6 +31,7 @@
     "@typescript-eslint/parser": "^5.29.0",
     "eslint": "~8.15.0",
     "eslint-config-prettier": "8.1.0",
+    "git-cz": "^4.9.0",
     "jest": "27.5.1",
     "lerna": "^5.0.0",
     "nx": "14.4.3",
