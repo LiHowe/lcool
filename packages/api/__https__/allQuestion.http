@@ -1,0 +1,24 @@
+POST https://leetcode.cn/graphql/
+X-Request-Type: GraphQL
+Content-Type: application/json
+Cookie: csrftoken=4yoKKQFasX19B1QXNHrM1KEtwa2fGpTGLhGv04Dc6YzWPLtBv3Htdzl6IFKy7yeq;
+Origin: : https://leetcode.cn
+
+query allQuestions {
+      allQuestionsBeta {
+        ...questionSummaryFields
+        __typename
+      }
+    }
+fragment questionSummaryFields on QuestionNode {
+  title
+  titleSlug
+  translatedTitle
+  questionId
+  questionFrontendId
+  status
+  difficulty
+  isPaidOnly
+  categoryTitle
+  __typename
+}

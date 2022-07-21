@@ -1,0 +1,31 @@
+POST https://leetcode.cn/graphql/
+X-Request-Type: GraphQL
+Content-Type: application/json
+Cookie: csrftoken=4yoKKQFasX19B1QXNHrM1KEtwa2fGpTGLhGv04Dc6YzWPLtBv3Htdzl6IFKy7yeq;
+Origin: : https://leetcode.cn
+
+query submissions($offset: Int!, $limit: Int!, $questionSlug: String!, $lang: String) {
+  submissionList(offset: $offset, limit: $limit, questionSlug: $questionSlug, lang: $lang) {
+    hasNext
+    submissions {
+      id
+      statusDisplay
+      lang
+      runtime
+      timestamp
+      url
+      memory
+      submissionComment {
+        comment
+        flagType
+      }
+    }
+  }
+}
+
+{
+    "offset": 0,
+    "limit": 40,
+    "questionSlug": "two-sum",
+    "lang": "javascript"
+}

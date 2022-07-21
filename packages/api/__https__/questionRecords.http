@@ -1,0 +1,23 @@
+POST https://leetcode.cn/graphql/
+X-Request-Type: GraphQL
+Content-Type: application/json
+Cookie: csrftoken=4yoKKQFasX19B1QXNHrM1KEtwa2fGpTGLhGv04Dc6YzWPLtBv3Htdzl6IFKy7yeq;
+Origin: https://leetcode.cn
+
+query dailyQuestionRecords($year: Int!, $month: Int!) {
+  dailyQuestionRecords(year: $year, month: $month) {
+    date
+    userStatus
+    question {
+      questionFrontendId
+      title
+      titleSlug
+      translatedTitle
+    }
+  }
+}
+
+{
+  "year":2022,
+  "month":7
+}

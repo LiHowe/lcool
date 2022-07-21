@@ -1,0 +1,26 @@
+POST https://leetcode.cn/graphql/
+X-Request-Type: GraphQL
+Content-Type: application/json
+Cookie: csrftoken=4yoKKQFasX19B1QXNHrM1KEtwa2fGpTGLhGv04Dc6YzWPLtBv3Htdzl6IFKy7yeq;
+Origin: : https://leetcode.cn
+
+query userSessionProgress($userSlug: String!) {
+  userProfileUserQuestionProgress(userSlug: $userSlug) {
+    numAcceptedQuestions {
+      difficulty
+      count
+    }
+    numFailedQuestions {
+      difficulty
+      count
+    }
+    numUntouchedQuestions {
+      difficulty
+      count
+    }
+  }
+}
+
+{
+  "userSlug": "leetcode-cn"
+}
