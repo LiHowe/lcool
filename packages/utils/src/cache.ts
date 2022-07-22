@@ -27,3 +27,5 @@ export class Cache {
   }
 
 }
+
+export const cache = new Cache()
