@@ -1,8 +1,11 @@
+import { program } from 'commander'
 import { resolve } from 'path'
 import { shell, readToObject } from '@lcool/utils'
 
-export function version() {
-  const latestVer = getLatestVersion()
+export const version = async () => program.version(await versionHandler())
+
+export async function versionHandler(): Promise<string> {
+  const latestVer = await getLatestVersion()
   const localVer = getLocalVersion()
   if (latestVer !== localVer) {
     console.log('new version available:', latestVer)

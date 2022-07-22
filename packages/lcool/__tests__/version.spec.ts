@@ -2,7 +2,7 @@ import {
   version,
   getLatestVersion,
   getLocalVersion,
-} from '../src/lib/version'
+} from '../src/commands'
 
 describe('test version', () => {
   it('should return version', () => {

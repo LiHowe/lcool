@@ -1,6 +1,7 @@
 /* eslint-disable */
 export default {
-  displayName: 'lcool-cli',
+  displayName: 'lcool',
+  testTimeout: 1000 * 60,
   preset: '../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -11,5 +12,5 @@ export default {
     '^.+\\.[tj]s$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/packages/lcool-cli',
+  coverageDirectory: '../../coverage/packages/lcool',
 };
