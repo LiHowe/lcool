@@ -109,3 +109,54 @@ query mySubmissionDetail($id: ID!) {
 }
 
 `
+
+
+export const queryUserInfo = `
+query globalData {
+  userStatus {
+    isSignedIn
+    isPremium
+    username
+    realName
+    avatar
+    userSlug
+    useTranslation
+  }
+}
+`
+
+// 查询每日做题记录
+export const queryDailyRecord = `
+query dailyQuestionRecords($year: Int!, $month: Int!) {
+  dailyQuestionRecords(year: $year, month: $month) {
+    date
+    userStatus
+    question {
+      questionFrontendId
+      title
+      titleSlug
+      translatedTitle
+    }
+  }
+}
+`
+
+// 查看统计信息
+export const querySummary = `
+query userSessionProgress($userSlug: String!) {
+  userProfileUserQuestionProgress(userSlug: $userSlug) {
+    numAcceptedQuestions {
+      difficulty
+      count
+    }
+    numFailedQuestions {
+      difficulty
+      count
+    }
+    numUntouchedQuestions {
+      difficulty
+      count
+    }
+  }
+}
+`

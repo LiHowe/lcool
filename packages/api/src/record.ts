@@ -1,20 +1,10 @@
 import { request } from './request'
+import { queryDailyRecord, querySummary } from './query'
+import { URLs } from './urls'
 
 export function getMonthRecords(year: number, month: number) {
-  return request.post(`
-    query dailyQuestionRecords($year: Int!, $month: Int!) {
-      dailyQuestionRecords(year: $year, month: $month) {
-        date
-        userStatus
-        question {
-          questionFrontendId
-          title
-          titleSlug
-          translatedTitle
-        }
-      }
-    }
-   `, {
+  return request.post(URLs.graphql, {
+    query: queryDailyRecord,
     variables: {
       year,
       month,
@@ -37,24 +27,8 @@ export interface ReportInfo {
 }
 
 export function getReportData(userSlug: string): Promise<ReportInfo> {
-  return request.post(`
-    query userSessionProgress($userSlug: String!) {
-      userProfileUserQuestionProgress(userSlug: $userSlug) {
-        numAcceptedQuestions {
-          difficulty
-          count
-        }
-        numFailedQuestions {
-          difficulty
-          count
-        }
-        numUntouchedQuestions {
-          difficulty
-          count
-        }
-      }
-    }
-  `, {
+  return request.post(URLs.graphql, {
+    query: querySummary,
     variables: { userSlug }
   })
 }

@@ -1,0 +1,11 @@
+POST https://leetcode.cn/accounts/login/
+Cookie: csrftoken=null;
+Origin: https://leetcode.cn/
+Referer: https://leetcode.cn/accounts/login/
+Content-Type: 'application/x-www-form-urlencoded'
+
+
+login=xx
+&password=xx
+&csrfmiddlewaretoken=null
+

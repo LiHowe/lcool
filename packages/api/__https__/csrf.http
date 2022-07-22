@@ -1,0 +1,10 @@
+POST https://leetcode.cn/graphql
+X-Request-Type: GraphQL
+Content-Type: application/json
+Origin: https://leetcode.cn
+
+query nojGlobalData {
+  siteRegion
+  chinaHost
+  websocketUrl
+}

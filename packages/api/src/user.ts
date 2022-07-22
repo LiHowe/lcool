@@ -1,19 +1,20 @@
 import { request } from './request'
+import { URLs } from './urls'
+import { queryUserInfo } from './query'
 
-export function getUserInfo() {
-  return request.post(`
-    query globalData {
-      userStatus {
-        isSignedIn
-        isPremium
-        username
-        realName
-        avatar
-        userSlug
-        useTranslation
-      }
-    }
-  `, {
-    variables: {}
+export interface UserStatus {
+  avatar?: string
+  realName?: string
+  username?: string
+  userSlug?: string
+  isPremium?: boolean
+  isSignedIn?: boolean
+  useTranslation?: boolean
+}
+
+export async function getUserInfo(): Promise<{ userStatus: UserStatus }> {
+  return await request.post(URLs.graphql, {
+    variables: {},
+    query: queryUserInfo
   })
 }

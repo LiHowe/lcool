@@ -1,0 +1,19 @@
+POST https://leetcode.cn/graphql/ HTTP/1.1
+X-Request-Type: GraphQL
+Content-Type: application/json
+Cookie: csrftoken=4yoKKQFasX19B1QXNHrM1KEtwa2fGpTGLhGv04Dc6YzWPLtBv3Htdzl6IFKy7yeq;LEETCODE_SESSION=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfYXV0aF91c2VyX2lkIjoiMTE2OTkyNiIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImFsbGF1dGguYWNjb3VudC5hdXRoX2JhY2tlbmRzLkF1dGhlbnRpY2F0aW9uQmFja2VuZCIsIl9hdXRoX3VzZXJfaGFzaCI6IjFjZDhmMmU2YzE2OTJhNmVmZjhiMmY4MWM1ODY5NTBlZDhiZGJiNjRkNzgyOTJmNDZjY2ZmYTNkMjFlMTUzY2UiLCJpZCI6MTE2OTkyNiwiZW1haWwiOiJob3dlLnBlcnNvbmFsQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiOTlQQ1QiLCJ1c2VyX3NsdWciOiI5OXBjdCIsImF2YXRhciI6Imh0dHBzOi8vYXNzZXRzLmxlZXRjb2RlLmNuL2FsaXl1bi1sYy11cGxvYWQvdXNlcnMvaG93ZS0xMC9hdmF0YXJfMTU3ODU0MjQ1NC5wbmciLCJwaG9uZV92ZXJpZmllZCI6dHJ1ZSwiX3RpbWVzdGFtcCI6MTY1ODQ3MzEzMi4yMDczMjU1LCJleHBpcmVkX3RpbWVfIjoxNjYxMDIyMDAwLCJfc2Vzc2lvbl9leHBpcnkiOjEzODI0MDB9.kDrTIUIpjRRrWe3hZIHMgDmNQyy7xq0WtKPTTSmvXRw
+Origin: : https://leetcode.cn
+
+query globalData {
+  userStatus {
+    isSignedIn
+    isPremium
+    username
+    realName
+    avatar
+    userSlug
+    useTranslation
+  }
+}
+
+{}
