@@ -38,6 +38,10 @@ request.interceptors.response.use(response => {
 
 const cookies: Record<string, string> = {}
 
+export function setSessionId(sessionId: string) {
+  setCookie('LEETCODE_SESSION', sessionId)
+}
+
 function setCookie(k: string, v: string) {
   cookies[k] = v
   request.defaults.headers.common['Cookie'] += `; ${k}=${v}`
