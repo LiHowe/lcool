@@ -23,8 +23,10 @@ request.interceptors.response.use(response => {
       }
     }
   }
+  // graphql response always wrapped by querySchema
+  // and we just need the value of the response
   if (response.config.url?.includes('/graphql')) {
-    return response.data.data
+    return Object.values(response.data.data)
   }
   // use `data-format: raw` as flag to response raw data
   if (response.headers['data-format'] === 'raw') {

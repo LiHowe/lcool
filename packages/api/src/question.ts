@@ -37,8 +37,8 @@ export async function getQuestionDetail(titleSlug: string): Promise<Question> {
 /**
  * 获取问题列表
  */
-export function getAllQuestions() {
-  return request.post(URLs.graphql, {
+export async function getAllQuestions(): Promise<Question[]> {
+  return await request.post(URLs.graphql, {
     query: queryAllQuestions,
     operationName: 'allQuestions',
     variables: {}
@@ -46,8 +46,8 @@ export function getAllQuestions() {
 }
 
 // Question of today
-export function getTodayQuestion() {
-  return request.post(URLs.graphql, {
+export async function getTodayQuestion(): Promise<Pick<Question, 'titleSlug'>> {
+  return await request.post(URLs.graphql, {
     query: queryQuestionOfToday,
     operationName: 'questionOfToday',
     variables: {}
@@ -55,11 +55,11 @@ export function getTodayQuestion() {
 }
 
 
-export function submitQuestion(titleSlug: string, data: {
+export async function submitQuestion(titleSlug: string, data: {
   typed_code: string,
   question_id: string,
-}): Promise<{ submission_id: number }> {
-  return request.post(`${URLs.problems}/${titleSlug}/submit/`, {
+}): Promise<number> {
+  return await request.post(`${URLs.problems}/${titleSlug}/submit/`, {
     ...data,
     questionSlug: titleSlug,
     test_judger: '',
@@ -74,12 +74,12 @@ export interface TestResponse {
   interpret_id: string
   test_case: string
 }
-export function testQuestion(titleSlug: string, data: {
+export async function testQuestion(titleSlug: string, data: {
   data_input: string,
   typed_code: string,
   question_id: string,
 }): Promise<TestResponse> {
-  return request.post(`${URLs.problems}/${titleSlug}/interpret_solution/`, {
+  return await request.post(`${URLs.problems}/${titleSlug}/interpret_solution/`, {
     ...data,
     test_judger: '',
     test_mode: false,
@@ -104,8 +104,23 @@ export interface CheckResponse {
  * @param submissionId
  * @returns
  */
-export function checkSubmission(submissionId: number): Promise<CheckResponse | Pick<CheckResponse, 'state'>> {
-  return request.post(`${URLs.submissions}/detail/${submissionId}/check/`)
+export async function checkSubmission(submissionId: number): Promise<CheckResponse | Pick<CheckResponse, 'state'>> {
+  return await request.post(`${URLs.submissions}/detail/${submissionId}/check/`)
+}
+
+
+export interface Submission {
+  id: string
+  statusDisplay: 'Accepted' | 'Wrong Answer'
+  lang: string
+  runtime: string
+  timestamp: string
+  url: string
+  memory: string
+  submissionComment: {
+    comment: string
+    flagType: string
+  } | null
 }
 
 /**
@@ -113,13 +128,13 @@ export function checkSubmission(submissionId: number): Promise<CheckResponse | P
  * @param variables
  * @returns
  */
-export function getSubmissions(variables: {
+export async function getSubmissions(variables: {
   questionSlug: string,
   offset?: number,
   limit?: number,
   language?: string,
-}) {
-  return request.post(URLs.graphql, {
+}): Promise<{ hasNext: boolean, submissions: Submission[]}> {
+  return await request.post(URLs.graphql, {
     query: querySubmissions,
     operationName: 'submissions',
     variables
