@@ -1,0 +1,23 @@
+/**
+* @lcool {{ createTime }}
+* 序号: {{ id }}
+* 名称: {{ titleCn }} | {{ title }}
+* 难度: {{ difficulty }}
+* 标签: {{#each tags}} {{this}} {{#if @last}}{{else}}|{{~/if}}{{/each}}
+* 链接: {{ link }}
+* 通过率: {{ acRate }}({{totalAccepted}}/{{totalSubmission}})
+* -------------------------------------------------
+*
+{{#each detail}}
+* {{this}}
+{{/each}}
+*
+* -------------------------------------------------
+*
+*/
+
+const { test } = require('./utils')
+// @lcool code-start
+{{~code}}
+// @lcool code-end
+test()
