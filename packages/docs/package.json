@@ -1,0 +1,15 @@
+{
+  "name": "@lcool/docs",
+  "version": "0.0.1",
+  "description": "documents of @lcool",
+  "scripts": {
+    "dev": "vitepress dev src",
+    "build": "vitepress build src",
+    "serve": "vitepress serve src"
+  },
+  "author": "LiHowe",
+  "license": "MIT",
+  "dependencies": {
+    "vitepress": "^1.0.0-alpha.4"
+  }
+}
