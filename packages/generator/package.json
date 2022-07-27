@@ -5,5 +5,6 @@
   "dependencies": {
     "@lcool/utils": "^0.0.4",
     "handlebars": "^4.7.7"
-  }
+  },
+  "gitHead": "60b64ce8ec03dc8fa732afe8448c66e6f8286b6d"
 }

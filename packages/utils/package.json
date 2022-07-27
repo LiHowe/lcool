@@ -14,5 +14,6 @@
     "@types/envinfo": "^7.8.1",
     "@types/fs-extra": "^9.0.13",
     "@types/nconf": "^0.10.3"
-  }
+  },
+  "gitHead": "60b64ce8ec03dc8fa732afe8448c66e6f8286b6d"
 }

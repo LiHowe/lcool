@@ -11,5 +11,6 @@
   "license": "MIT",
   "dependencies": {
     "vitepress": "^1.0.0-alpha.4"
-  }
+  },
+  "gitHead": "60b64ce8ec03dc8fa732afe8448c66e6f8286b6d"
 }
