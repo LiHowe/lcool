@@ -6,7 +6,7 @@
     "publish": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
-        "command": "node tools/scripts/publish.mjs generator {args.ver} {args.tag}"
+        "command": "node tools/scripts/publish.mjs generator {args.ver} {args.otp} {args.tag}"
       },
       "dependsOn": [
         {
