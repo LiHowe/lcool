@@ -1,6 +1,6 @@
 {
   "name": "@lcool/docs",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "documents of @lcool",
   "scripts": {
     "dev": "vitepress dev src",

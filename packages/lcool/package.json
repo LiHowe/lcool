@@ -1,6 +1,6 @@
 {
   "name": "lcool",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A leetcode CLI for building self lc repo",
   "type": "commonjs",
   "bin": {
@@ -17,8 +17,8 @@
   "author": "LiHowe",
   "license": "MIT",
   "dependencies": {
-    "@lcool/api": "^0.0.2",
-    "@lcool/utils": "^0.0.2",
+    "@lcool/api": "^0.0.3",
+    "@lcool/utils": "^0.0.3",
     "@types/figlet": "^1.5.4",
     "commander": "^9.4.0",
     "figlet": "^1.5.2",
