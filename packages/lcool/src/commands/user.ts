@@ -1,7 +1,7 @@
 import { program } from 'commander'
 import prompts from 'prompts'
 import { login, getUserInfo, UserStatus, setSessionId } from '@lcool/api'
-import { logger, cache } from '@lcool/utils'
+import { log, cache } from '@lcool/utils'
 import ora from 'ora'
 
 export const user = () => program
@@ -84,7 +84,7 @@ export async function accountLogin() {
     spin.succeed('登录成功:' + name)
   } catch (e) {
     spin.fail('登录失败')
-    logger.error('Request Error: login' + e)
+    log.error('Request Error: login' + e)
   }
 }
 
@@ -110,7 +110,7 @@ async function cacheUserInfo(user: UserInfo) {
       ...user,
     })
   } catch (e) {
-    logger.error('Cache User Error: ' + e)
+    log.error('Cache User Error: ' + e)
     return {}
   }
 }

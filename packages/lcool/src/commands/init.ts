@@ -2,9 +2,11 @@ import {
   shell,
   isExist,
   remove,
-  logger,
+  log,
   config,
+  cache,
 } from '@lcool/utils'
+import { getAllQuestions } from '@lcool/api'
 import { program } from 'commander'
 import prompts from 'prompts'
 import ora from 'ora'
@@ -55,10 +57,10 @@ async function initHandler(repoName: string = templateRepoName) {
     }
   }
   const spin = ora('生成项目中...').start()
+  await createQuestionIndex()
   spin[await clone(repoName) ? 'succeed' : 'warn']()
 }
 
-// WIP
 async function clone(repoName: string) {
   try {
     // clone repo
@@ -70,14 +72,18 @@ async function clone(repoName: string) {
     return true
   } catch (e) {
     remove(repoName)
-    logger.error(e)
+    log.error(e)
     return false
   }
 }
 
-async function createQuestionIndex() {
+// 初始化的时候创建问题索引, 将全部问题缓存到本地
+export async function createQuestionIndex() {
   // ..
+  try {
+    const allQuestions = await getAllQuestions()
+    cache.set('questions', allQuestions)
+  } catch (e) {
+    log.error(`创建题目索引文件失败, ${e}`)
+  }
 }
-
-
-

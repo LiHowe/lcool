@@ -16,6 +16,10 @@ figlet('LCOOL', () => {
   cache.init()
   config.init()
 
+  program
+    .name('lcool')
+    .usage('<command> [options]')
+
   version()
   init()
   generate()
