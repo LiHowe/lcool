@@ -20,7 +20,6 @@ export const queryAllQuestions = `
 query allQuestions {
   allQuestionsBeta {
     ...questionSummaryFields
-    __typename
   }
 }
 
@@ -34,7 +33,6 @@ fragment questionSummaryFields on QuestionNode {
   difficulty
   isPaidOnly
   categoryTitle
-  __typename
 }
 `
 
@@ -44,9 +42,7 @@ query questionOfToday {
   todayRecord {
     question {
       titleSlug
-      __typename
     }
-    __typename
   }
 }
 `

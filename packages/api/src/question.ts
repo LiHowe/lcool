@@ -45,8 +45,11 @@ export async function getAllQuestions(): Promise<Question[]> {
   })
 }
 
-// Question of today
-export async function getTodayQuestion(): Promise<Pick<Question, 'titleSlug'>> {
+/**
+ * 今日问题
+ * @returns
+ */
+export async function getTodayQuestion(): Promise<{ question: Pick<Question, 'titleSlug'> }[][]> {
   return await request.post(URLs.graphql, {
     query: queryQuestionOfToday,
     operationName: 'questionOfToday',
@@ -54,7 +57,12 @@ export async function getTodayQuestion(): Promise<Pick<Question, 'titleSlug'>> {
   })
 }
 
-
+/**
+ * 提交问题
+ * @param titleSlug
+ * @param data
+ * @returns
+ */
 export async function submitQuestion(titleSlug: string, data: {
   typed_code: string,
   question_id: string,

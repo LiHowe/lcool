@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { URLs } from './urls'
+import { URLSearchParams } from 'url'
 
 export const request = axios.create({
   timeout: 60 * 1000,

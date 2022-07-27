@@ -2,7 +2,7 @@ import { request } from './request'
 import { URLs } from './urls'
 import { queryUserInfo } from './query'
 
-export interface UserStatus {
+export interface UserStatus extends Record<string, unknown> {
   avatar?: string
   realName?: string
   username?: string
