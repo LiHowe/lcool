@@ -1,12 +1,12 @@
 {
   "name": "@lcool/api",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "commonjs",
   "scripts": {
     "build": "tsc"
   },
   "dependencies": {
-    "@lcool/utils": "^0.0.3",
+    "@lcool/utils": "^0.0.4",
     "axios": "^0.27.2"
   }
 }

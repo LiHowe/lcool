@@ -1,9 +1,9 @@
 {
   "name": "@lcool/generator",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "commonjs",
   "dependencies": {
-    "@lcool/utils": "^0.0.3",
+    "@lcool/utils": "^0.0.4",
     "handlebars": "^4.7.7"
   }
 }
