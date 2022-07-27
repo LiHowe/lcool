@@ -1,11 +1,5 @@
 # generator
 
-This library was generated with [Nx](https://nx.dev).
+generator of lcool code template
 
-## Building
-
-Run `nx build generator` to build the library.
-
-## Running unit tests
-
-Run `nx test generator` to execute the unit tests via [Jest](https://jestjs.io).
+use handlebars as template compiler.
