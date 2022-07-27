@@ -1,5 +1,4 @@
 {
-  "name": "lcool",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -7,6 +6,7 @@
     "build:api": "nx build api",
     "publish:lc": "cd dist/packages/lcool && npm publish --access=public",
     "version": "lerna version",
+    "clear": "nx clear-cache",
     "publish": "lerna publish",
     "init": "lerna bootstrap",
     "commit": "git-cz"

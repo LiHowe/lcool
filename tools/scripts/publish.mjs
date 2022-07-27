@@ -58,4 +58,4 @@ try {
 }
 
 // Execute "npm publish" to publish
-execSync(`npm publish --access public --tag ${tag} --otp ${otp}`);
+execSync(`npm publish --access public --tag ${tag ?? 'next'} --otp ${otp}`);
