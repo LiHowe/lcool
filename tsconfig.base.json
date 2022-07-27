@@ -8,15 +8,19 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
-    "module": "esnext",
-    "lib": ["es2017", "dom"],
+    "target": "ES6",
+    "module": "ESNext",
+    "lib": ["ES2022", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "esModuleInterop": true,
+    "removeComments": true,
     "baseUrl": ".",
     "paths": {
       "@lcool/api": ["packages/api/src/index.ts"],
+      "@lcool/demo": ["packages/demo/src/index.ts"],
+      "@lcool/docs": ["packages/docs/src/index.ts"],
+      "@lcool/generator": ["packages/generator/src/index.ts"],
       "@lcool/utils": ["packages/utils/index.ts"],
       "lcool": ["packages/lcool/src/index.ts"]
     }

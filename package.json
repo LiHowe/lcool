@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "build:lc": "nx build lcool",
+    "build:api": "nx build api",
     "publish:lc": "cd dist/packages/lcool && npm publish --access=public",
     "version": "lerna version",
     "publish": "lerna publish",
@@ -12,7 +13,8 @@
   },
   "private": true,
   "dependencies": {
-    "@swc/helpers": "~0.3.3"
+    "@swc/helpers": "~0.3.3",
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
     "@nrwl/cli": "14.4.3",
@@ -20,6 +22,7 @@
     "@nrwl/jest": "14.4.3",
     "@nrwl/js": "14.4.3",
     "@nrwl/linter": "14.4.3",
+    "@nrwl/node": "^14.4.3",
     "@nrwl/nx-cloud": "latest",
     "@nrwl/workspace": "14.4.3",
     "@swc/cli": "~0.1.55",

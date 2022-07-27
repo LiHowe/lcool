@@ -1,0 +1,9 @@
+0 silly argv { _: [ 'run' ], lernaVersion: '5.1.8', '$0': 'lerna', script: 'build' }
+1 notice cli v5.1.8
+2 verbose rootPath /Users/howe/Documents/GitHub/demo/lcool
+3 error Error: Invalid projects: @lcool/api, @lcool/docs
+3 error     at checkForInvalidProjects (/Users/howe/Documents/GitHub/demo/lcool/node_modules/nx/src/command-line/run-many.js:41:15)
+3 error     at projectsToRun (/Users/howe/Documents/GitHub/demo/lcool/node_modules/nx/src/command-line/run-many.js:34:5)
+3 error     at /Users/howe/Documents/GitHub/demo/lcool/node_modules/nx/src/command-line/run-many.js:20:26
+3 error     at Generator.next (<anonymous>)
+3 error     at fulfilled (/Users/howe/Documents/GitHub/demo/lcool/node_modules/tslib/tslib.js:115:62)

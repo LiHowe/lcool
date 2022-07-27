@@ -3,6 +3,8 @@
   "version": 2,
   "projects": {
     "api": "packages/api",
+    "docs": "packages/docs",
+    "generator": "packages/generator",
     "lcool": "packages/lcool",
     "utils": "packages/utils"
   }
