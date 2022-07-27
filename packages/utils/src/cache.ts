@@ -14,7 +14,7 @@ export class Cache {
     return readToObject(cacheFile(filename))
   }
 
-  set(filename: string, value: Record<string, any> | string) {
+  set(filename: string, value: Record<string, unknown> | string | Array<unknown>) {
     write(cacheFile(filename), value)
   }
 

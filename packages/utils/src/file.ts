@@ -10,7 +10,10 @@ import fg from 'fast-glob'
 
 import { toJSON } from './helpers'
 
-export function write(path: string, content: string | Record<string, any>) {
+export function write(
+  path: string,
+  content: string | Record<string, unknown> | Array<unknown>
+  ) {
   if (typeof content !== 'string') content = toJSON(content)
   writeFileSync(path, content, 'utf-8')
 }
