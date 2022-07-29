@@ -4,13 +4,26 @@ query questionData($titleSlug: String!) {
   question(titleSlug: $titleSlug) {
     content
     status
-    codeDefinition
+    codeSnippets {
+      lang
+      langSlug
+      code
+    }
+    topicTags {
+      name
+      slug
+      translatedName
+    }
     sampleTestCase
     enableRunCode
     metaData
     translatedContent
     isPaidOnly
     questionId
+    translatedTitle
+    title
+    titleSlug
+    difficulty
   }
 }
 `

@@ -12,20 +12,22 @@
   },
   "scripts": {
     "build": "nx build lcool",
-    "test": "nx test lcool"
+    "test": "nx test lcool",
+    "dev": "ts-node -r tsconfig-paths/register src/index.ts"
   },
   "author": "LiHowe",
   "license": "MIT",
   "dependencies": {
     "@lcool/api": "^0.0.4",
+    "@lcool/generator": "^0.0.4",
     "@lcool/utils": "^0.0.4",
-    "@types/figlet": "^1.5.4",
     "commander": "^9.4.0",
     "figlet": "^1.5.2",
     "ora": "5.4.1",
     "prompts": "^2.4.2"
   },
   "devDependencies": {
+    "@types/figlet": "^1.5.4",
     "@types/prompts": "^2.0.14"
   },
   "gitHead": "60b64ce8ec03dc8fa732afe8448c66e6f8286b6d"

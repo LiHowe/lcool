@@ -6,6 +6,7 @@ import {
   readFileSync,
   pathExistsSync,
 } from 'fs-extra'
+import { dirname, basename } from 'path'
 import fg from 'fast-glob'
 
 import { toJSON } from './helpers'
@@ -15,7 +16,9 @@ export function write(
   content: string | Record<string, unknown> | Array<unknown>
   ) {
   if (typeof content !== 'string') content = toJSON(content)
-  writeFileSync(path, content, 'utf-8')
+  const folderPath = dirname(path)
+  mkdir(folderPath)
+  writeFileSync(basename(path), content)
 }
 
 export function read(path: string) {

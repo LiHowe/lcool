@@ -1,8 +1,7 @@
-import { program } from 'commander'
 import { resolve } from 'path'
 import { shell, readToObject } from '@lcool/utils'
 
-export const version = async () => program.version(await versionHandler())
+export const version = () => versionHandler()
 
 export async function versionHandler(): Promise<string> {
   const latestVer = await getLatestVersion()
@@ -11,10 +10,8 @@ export async function versionHandler(): Promise<string> {
     console.log('new version available:', latestVer)
     console.log('run `npm install -g lcool` to update')
   }
-  // ..
   return localVer
 }
-
 
 // use npm info to get latest package info
 export async function getLatestVersion() {

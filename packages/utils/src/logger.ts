@@ -1,12 +1,23 @@
-import winston, { Logger } from 'winston'
+import winston, { Logger, format } from 'winston'
 import { logFile } from './path'
+
+const { timestamp, combine, colorize, printf } = format
+
+const logFormatter = printf((info) => {
+  const { timestamp, level, message } = info
+  return `${timestamp} [${level}]: ${message}`
+})
 
 class ILogger {
   private logger!: Logger
+
   init() {
     this.logger = winston.createLogger({
-      level: 'info',
-      format: winston.format.json(),
+      format: combine(
+        colorize(),
+        timestamp(),
+        logFormatter,
+      ),
       transports: [
         new winston.transports.File({
           filename: logFile('debug'),
@@ -16,19 +27,37 @@ class ILogger {
           filename: logFile('error'),
           level: 'error',
         }),
+        new winston.transports.Console({
+          format: winston.format.simple(),
+        })
       ],
     })
-
-    if (process.env['NODE_ENV'] !== 'production') {
-      this.logger.add(new winston.transports.Console({
-        format: winston.format.simple(),
-      }));
-    }
   }
-  getLogger() {
-    return this.logger
+
+  warn(message: string) {
+    this.logger.log({
+      level: 'warn',
+      message,
+    })
+  }
+  info(message: string) {
+    this.logger.log({
+      level: 'info',
+      message,
+    })
+  }
+  error(message: string) {
+    this.logger.log({
+      level: 'error',
+      message,
+    })
+  }
+  debug(message: string) {
+    this.logger.log({
+      level: 'debug',
+      message,
+    })
   }
 }
 
 export const logger = new ILogger()
-export const log = logger.getLogger()

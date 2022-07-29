@@ -1,8 +1,12 @@
 #!/usr/bin/env node
-import { program } from 'commander'
+import { Command, program } from 'commander'
 import figlet from 'figlet'
 
-import { cache, config, logger } from '@lcool/utils'
+import {
+  cache,
+  config,
+  logger,
+} from '@lcool/utils'
 
 import {
   init,
@@ -11,20 +15,27 @@ import {
   version,
 } from './commands'
 
-figlet('LCOOL', () => {
-  logger.init()
-  cache.init()
-  config.init()
-
-  program
+class LCool {
+  constructor() {
+    logger.init()
+    cache.init()
+    config.init()
+  }
+  async bootstrap() {
+    figlet('LCOOL', (err, data) => console.log(data))
+    program
     .name('lcool')
     .usage('<command> [options]')
+    .addCommand(init())
+    .addCommand(generate())
+    .addCommand(user())
+    .version(await version())
+    program.parseAsync()
+  }
+  addCommand(cmd: Command) {
+    program.addCommand(cmd)
+  }
+}
 
-  version()
-  init()
-  generate()
-  user()
-
-  program.parseAsync()
-})
-
+export const lcool = new LCool()
+lcool.bootstrap()

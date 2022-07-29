@@ -1,8 +1,8 @@
-import { clone } from '../src/lib/init'
+import { lcool } from '../src/index'
 
 
 describe('test:clone', () => {
-  it('should clone repo', async () => {
-    await clone()
+  it('should run', async () => {
+    lcool.bootstrap()
   })
 })

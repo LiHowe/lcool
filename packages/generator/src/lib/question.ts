@@ -1,24 +1,26 @@
 import Handlebars from 'handlebars'
 import { resolve } from 'path'
 import { read, write, cwd } from '@lcool/utils'
+import { QuestionDetail } from '@lcool/api'
 
-export interface QuestionTemplateData {
-  createTime: string
-  id: number | string
-  titleCn: string
-  title: string
-  tags: string[]
-  link: string
-  difficulty: string
-  acRate: number | string
-  totalAccepted: number | string
-  totalSubmission: number | string
-  detail: string[] // 题目描述
-  code: string
-}
-
-export function generateQuestion(data: QuestionTemplateData): void {
+export function generateQuestion(data: QuestionDetail): string {
   const source = read(resolve(__dirname, '../templates/question.hbs'))
   const template = Handlebars.compile(source)
-  write(template(data), resolve(cwd, './test/question.js'))
+  const code = data.codeSnippets.find(item => item.langSlug === 'javascript')?.code
+  const detail = data.translatedContent
+    .replaceAll(/<\/?\w+>/g, '')
+    .replaceAll(/\n{1,3}/g, '|')
+    .replaceAll('&nbsp;', ' ')
+    .split('|')
+  // TODO: HTML escape
+  const path = resolve(cwd, './test/question.js')
+  write(path, template({
+    ...data,
+    code,
+    detail,
+    createTime: new Date().toLocaleDateString(),
+    tags: data.topicTags.map(item => item.translatedName),
+    link: `https://leetcode.cn/problems/${data.titleSlug}`
+  }))
+  return path
 }

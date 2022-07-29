@@ -1,11 +1,10 @@
-import { program } from 'commander'
-import prompts from 'prompts'
+import { Command } from 'commander'
 import { login, getUserInfo, UserStatus, setSessionId } from '@lcool/api'
-import { log, cache } from '@lcool/utils'
+import { logger, cache } from '@lcool/utils'
 import ora from 'ora'
+import { quiz } from '../utils/prompts'
 
-export const user = () => program
-.command('user')
+export const user = () => new Command('user')
 .option('-l --login', '登录')
 .action(userHandler)
 
@@ -30,7 +29,7 @@ function cacheUser(user: UserInfo) {
 }
 
 async function loginForm() {
-  return await prompts([
+  return await quiz([
     {
       type: 'text',
       message: 'username:',
@@ -47,7 +46,7 @@ async function loginForm() {
 }
 
 async function cookieForm() {
-  return (await prompts([
+  return (await quiz<'cookie'>([
     {
       type: 'text',
       message: '请输入LeetCode Cookie Token',
@@ -60,7 +59,7 @@ async function cookieForm() {
 type LoginType = 'account' | 'cookie'
 
 async function loginType(): Promise<LoginType> {
-  return (await prompts([
+  return (await quiz<'loginType'>([
     {
       type: 'select',
       message: '',
@@ -84,7 +83,7 @@ export async function accountLogin() {
     spin.succeed('登录成功:' + name)
   } catch (e) {
     spin.fail('登录失败')
-    log.error('Request Error: login' + e)
+    logger.error('Request Error: login' + e)
   }
 }
 
@@ -110,7 +109,7 @@ async function cacheUserInfo(user: UserInfo) {
       ...user,
     })
   } catch (e) {
-    log.error('Cache User Error: ' + e)
+    logger.error('Cache User Error: ' + e)
     return {}
   }
 }

@@ -2,19 +2,23 @@ import {
   shell,
   isExist,
   remove,
-  log,
+  logger,
   config,
   cache,
 } from '@lcool/utils'
 import { getAllQuestions } from '@lcool/api'
-import { program } from 'commander'
-import prompts from 'prompts'
 import ora from 'ora'
+import { Command } from 'commander'
+import { quiz } from '../utils/prompts'
 
-export const init = () => program
-.command('init [name]')
-.description('初始化本地仓库')
-.action(initHandler)
+export const init = () => {
+  const init = new Command('init')
+  init
+  .argument('[name]', '项目名称')
+  .description('初始化本地仓库')
+  .action(initHandler)
+  return init
+}
 
 interface InitOptions extends Record<string, unknown> {
   endpoint?: 'leetcode' | 'leetcode-cn'
@@ -23,31 +27,26 @@ interface InitOptions extends Record<string, unknown> {
   loginType?: 'github' | 'leetcode' | 'cookie'
 }
 
-async function quiz(): Promise<InitOptions> {
-  const questions: prompts.PromptObject[] = [
-    {
-      type: 'select',
-      name: 'endpoint',
-      message: '请选择 LeetCode 站点',
-      choices: [
-        { title: 'LeetCode-US', value: 'leetcode' },
-        { title: 'LeetCodeCN', value: 'leetcode-cn' },
-      ]
-    }
-  ]
-  return prompts(questions)
-}
-
 const templateRepoURL = 'https://github.com/LiHowe/lcool-template'
 const templateRepoName = 'leetcode'
 
 async function initHandler(repoName: string = templateRepoName) {
-  // ..
-  const ans = await quiz()
-  config.init()
-  config.set(ans)
+  // const ans = await quiz([
+  //   {
+  //     type: 'select',
+  //     name: 'endpoint',
+  //     message: '请选择 LeetCode 站点',
+  //     choices: [
+  //       { title: 'LeetCode-US', value: 'leetcode' },
+  //       { title: 'LeetCodeCN', value: 'leetcode-cn' },
+  //     ]
+  //   }
+  // ])
+  // config.init()
+  // config.set(ans)
+  const spin = ora('初始化leetcode项目中...').start()
   if (isExist(repoName)) {
-    const { cover } = await prompts([{
+    const { cover } = await quiz([{
       type: 'confirm',
       name: 'cover',
       message: 'leetcode文件夹已经存在, 是否覆盖?',
@@ -56,9 +55,11 @@ async function initHandler(repoName: string = templateRepoName) {
       remove(repoName)
     }
   }
-  const spin = ora('生成项目中...').start()
-  await createQuestionIndex()
-  spin[await clone(repoName) ? 'succeed' : 'warn']()
+  if (!checkQuestionIndex()) {
+    await createQuestionIndex()
+  }
+  const success = await clone(repoName)
+  spin[success? 'succeed' : 'warn'](`初始化${success ? '成功' : '失败'}`)
 }
 
 async function clone(repoName: string) {
@@ -72,7 +73,7 @@ async function clone(repoName: string) {
     return true
   } catch (e) {
     remove(repoName)
-    log.error(e)
+    logger.error(`克隆Git仓库失败`)
     return false
   }
 }
@@ -84,6 +85,16 @@ export async function createQuestionIndex() {
     const allQuestions = await getAllQuestions()
     cache.set('questions', allQuestions)
   } catch (e) {
-    log.error(`创建题目索引文件失败, ${e}`)
+    logger.error(`创建题目索引文件失败, ${e}`)
+  }
+}
+
+// 检查题目索引是否已经存在
+export function checkQuestionIndex() {
+  try {
+    const c = cache.get('questions')
+    return !!c
+  } catch (e) {
+    return false
   }
 }

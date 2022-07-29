@@ -13,7 +13,7 @@ export function shell(cmd: string, opts: {
       ...opts,
     },(err, stdout, stderr) => {
       if (err) {
-        reject(err.message)
+        reject(err)
       } else {
         resolve({ stdout, stderr })
       }

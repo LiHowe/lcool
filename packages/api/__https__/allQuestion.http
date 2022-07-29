@@ -1,4 +1,5 @@
-POST https://leetcode.cn/graphql/
+# Webstorm use GRAPHQL prefix, VSCode RESTClient use normal POST prefix
+GRAPHQL https://leetcode.cn/graphql/
 X-Request-Type: GraphQL
 Content-Type: application/json
 Cookie: csrftoken=4yoKKQFasX19B1QXNHrM1KEtwa2fGpTGLhGv04Dc6YzWPLtBv3Htdzl6IFKy7yeq;

@@ -1,15 +1,14 @@
 /**
 * @lcool {{ createTime }}
-* 序号: {{ id }}
-* 名称: {{ titleCn }} | {{ title }}
+* 序号: {{ questionId }}
+* 名称: {{ translatedTitle }} | {{ title }}
 * 难度: {{ difficulty }}
 * 标签: {{#each tags}} {{this}} {{#if @last}}{{else}}|{{~/if}}{{/each}}
 * 链接: {{ link }}
-* 通过率: {{ acRate }}({{totalAccepted}}/{{totalSubmission}})
 * -------------------------------------------------
 *
 {{#each detail}}
-* {{this}}
+* {{{this}}}
 {{/each}}
 *
 * -------------------------------------------------
@@ -18,6 +17,6 @@
 
 const { test } = require('./utils')
 // @lcool code-start
-{{~code}}
+{{{code}}}
 // @lcool code-end
 test()

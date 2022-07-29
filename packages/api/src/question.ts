@@ -16,7 +16,31 @@ export interface Question {
   titleCn: string // 中文标题
   titleSlug: string // 处理后的标题
   solutionNum: number // 题解数量
-  status: 'AC' | 'TRIED' | 'NOT_START' // 状态
+  status: 'AC' | 'TRIED' | 'NOT_START' | null // 状态
+}
+
+export interface QuestionDetail {
+  content: string // 未翻译内容
+  status: 'ac' | 'notac' | null // 状态
+  codeSnippets: {
+    lang: string,
+    langSlug: string,
+    code: string,
+  }[] // 各语言代码片段
+  sampleTestCase: string // 测试用例
+  metaData: string // 题目元数据, 包含标题, 参数类型, 返回值类型
+  translatedContent: string // 翻译后的题目内容
+  isPaidOnly: boolean // 是否是付费用户专享
+  questionId: string // 题目ID
+  topicTags: {
+    name: string,
+    slug: string,
+    translatedName: string
+  }[] // 题目标签
+  title: string // 原标题
+  titleSlug: string
+  difficulty: 'Easy' | 'Medium' | 'Hard' // 难度
+  translatedTitle: string // 翻译后的标题
 }
 
 /**
@@ -24,7 +48,7 @@ export interface Question {
  * @param titleSlug
  * @returns
  */
-export async function getQuestionDetail(titleSlug: string): Promise<Question> {
+export async function getQuestionDetail(titleSlug: string): Promise<QuestionDetail[]> {
   return await request.post(URLs.graphql, {
     query: queryQuestionData,
     operationName: 'questionData',
